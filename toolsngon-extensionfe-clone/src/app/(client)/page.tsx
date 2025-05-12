@@ -1,5 +1,4 @@
-// src/app/page.tsx
-import Testimonials from "./components/Testimonials";
+import Testimonials from "../components/ui/Testimonials";
 
 export default function Home() {
   return (
@@ -7,7 +6,7 @@ export default function Home() {
       <h1 className="text-5xl font-extrabold text-white drop-shadow-lg">
         Hello world
       </h1>
-      <Testimonials />
+      <Testimonials/>
     </div>
   );
-}
+} 
