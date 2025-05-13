@@ -1,12 +1,23 @@
+import HeroSection from "../components/ui/HeroSection";
+import FeatureSection from "../components/ui/FeatureSection";
 import Testimonials from "../components/ui/Testimonials";
+import CtaSection from "../components/ui/CtaSection";
+import PricingSection from "../components/ui/PricingSection";
+import FaqSection from "../components/ui/FaqSection";
+import DownloadSection from "../components/ui/DownloadSection";
+import FloatingButtons from "../components/ui/FloatingButtons";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 dark:from-gray-900 dark:via-purple-900 dark:to-black">
-      <h1 className="text-5xl font-extrabold text-white drop-shadow-lg">
-        Hello world
-      </h1>
-      <Testimonials/>
-    </div>
+    <>
+      <HeroSection />
+      <FeatureSection />
+      <Testimonials />
+      <PricingSection />
+      <CtaSection />
+      <FaqSection />
+      <DownloadSection/>
+      <FloatingButtons />
+    </>
   );
-} 
+}

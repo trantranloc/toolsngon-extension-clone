@@ -1,81 +1,91 @@
-// components/Testimonials.tsx
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
 
 export default function Testimonials() {
-    return (
-        <section className="bg-white py-20">
-            <div className="max-w-6xl mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Người dùng nói gì?</h2>
-                    <p className="text-gray-600 text-lg">
-                        Một vài lời chia sẻ thực tế từ cộng đồng sử dụng ToolsNgon mỗi ngày.
-                    </p>
+  return (
+    <section className="py-16 relative container mx-auto">
+      <div className="mx-auto text-center flex items-center justify-center flex-col">
+        <p className="text-4xl dark:text-slate-200 text-slate-900 text-center mb-2">
+          Khách hàng của chúng tôi nói gì?
+        </p>
+
+        <Image
+          src="https://www.sellthetrend.com/images/trust-excellent.webp"
+          alt="trust rating"
+          width={300}
+          height={96}
+          className="h-24 w-auto mb-12"
+        />
+
+        <div className="w-full relative">
+          <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-0">
+            {[1, 2, 3, 4, 5, 6, 7].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col gap-4 p-6 bg-white rounded-2xl"
+              >
+                <div className="flex items-center">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <Image
+                      key={i}
+                      src="https://www.sellthetrend.com/images/star.svg"
+                      alt="star"
+                      width={16}
+                      height={16}
+                      className="w-4 h-4"
+                    />
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Testimonial 1 */}
-                    <div className="bg-gray-100 rounded-lg p-6 shadow hover:shadow-md transition">
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                                <Image
-                                    src="/images/testimonials/user1.jpg"
-                                    alt="User 1"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-lg">Nguyễn Văn A</h4>
-                                <span className="text-sm text-gray-500">Nhà phát triển web</span>
-                            </div>
-                        </div>
-                        <p className="text-gray-700 text-sm">
-                            "Tôi sử dụng ToolsNgon hàng ngày để tạo mã QR và các tiện ích văn bản. Rất nhanh và miễn phí!"
-                        </p>
-                    </div>
+                <p className="text-slate-900 dark:text-slate-200 text-left">
+                  Đây là lời đánh giá mẫu sẽ được thay thế bằng nội dung thật.
+                </p>
 
-                    {/* Testimonial 2 */}
-                    <div className="bg-gray-100 rounded-lg p-6 shadow hover:shadow-md transition">
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                                <Image
-                                    src="/images/testimonials/user2.jpg"
-                                    alt="User 2"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-lg">Trần Thị B</h4>
-                                <span className="text-sm text-gray-500">Marketer</span>
-                            </div>
-                        </div>
-                        <p className="text-gray-700 text-sm">
-                            "Các công cụ rất tiện, đặc biệt là chức năng rút gọn link và thống kê lượt nhấp."
-                        </p>
-                    </div>
+                <div className="flex items-center justify-start">
+                  <div className="h-12 w-12 rounded-full overflow-hidden">
+                    <Image
+                      src="https://images.pexels.com/photos/29483314/pexels-photo-29483314/free-photo-of-ph-n-vi-t-nam-truy-n-th-ng-trong-b-i-c-nh-h-i-an.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      alt="khách hàng"
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                  <p className="text-slate-900 dark:text-slate-200 text-left ml-4 mr-1">
+                    Khách hàng {item}
+                  </p>
 
-                    {/* Testimonial 3 */}
-                    <div className="bg-gray-100 rounded-lg p-6 shadow hover:shadow-md transition">
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                                <Image
-                                    src="/images/testimonials/user3.jpg"
-                                    alt="User 3"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-lg">Lê Văn C</h4><span className="text-sm text-gray-500">Sinh viên</span>
-                            </div>
-                        </div>
-                        <p className="text-gray-700 text-sm">
-                            "Giao diện đơn giản dễ dùng, không quảng cáo rối mắt. Mình dùng cả trên máy tính và điện thoại."
-                        </p>
-                    </div>
+                  <div className="text-blue-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      stroke="none"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-badge-check"
+                    >
+                      <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+                      <path
+                        d="m9 12 2 2 4-4"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

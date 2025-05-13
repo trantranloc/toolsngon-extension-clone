@@ -1,60 +1,113 @@
-// components/Header.tsx
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const toggleMenu = () => setShow(!show);
 
   return (
-    <header className="bg-white shadow-sm fixed top-0 w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <Link href="/" className="text-xl font-bold text-gray-800">
-            Tools Ngon
-          </Link>
-          <div className="hidden md:flex space-x-4">
-            <Link href="#features" className="hover:text-indigo-600 font-medium">
-              Tính năng
-            </Link>
-            <Link href="#pricing" className="hover:text-indigo-600 font-medium">
-              Gói cước
-            </Link>
-            <Link href="#contact" className="hover:text-indigo-600 font-medium">
-              Liên hệ
-            </Link>
+    <nav className="px-4 lg:px-0 top-4 left-0 z-[999] fixed right-0 container mx-auto">
+      <div className="w-full lg:grid flex justify-between lg:grid-cols-12 items-center p-2 rounded-2xl bg-white relative shadow-lg">
+        {/* Logo + Toggle button */}
+        <div className="flex items-center justify-start lg:col-span-2 pl-2">
+          <div>
+            <Image
+              src="/media/landing/logo/logo-full_apptoolsngon.png"
+              alt="Logo"
+              width={120}
+              height={32}
+              priority
+              className="h-8 w-auto hidden lg:block dark:grayscale dark:brightness-200"
+            />
+            <Image
+              src="/media/favicons/originals/favicon.ico"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="h-8 block lg:hidden dark:grayscale dark:brightness-200"
+            />
           </div>
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-indigo-600 focus:outline-none"
+          <button
+            aria-label="Toggle mobile menu"
+            onClick={toggleMenu}
+            className="text-slate-800 flex items-center justify-center lg:hidden p-3 rounded-2xl"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24">
-                <path
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                />
-              </svg>
-            </button>
-          </div>
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
         </div>
-      </div>
 
-      {isOpen && (
-        <div className="md:hidden bg-white px-4 pb-4">
-          <Link href="#features" className="block py-2">
-            Tính năng
+        {/* Nav Links */}
+        <div
+          className={`col-span-8 items-center justify-center gap-2 absolute top-full bg-white rounded-2xl w-full p-4 mt-2 lg:top-0 lg:relative lg:p-0 lg:mt-0 left-0 ${
+            show ? "flex" : "hidden"
+          } lg:flex`}
+        >
+          <Link
+            href="https://app.toolsngon.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 px-3 py-1 hover:bg-slate-100 rounded-xl text-xs lg:text-lg"
+          >
+            Trang Chủ
           </Link>
-          <Link href="#pricing" className="block py-2">
-            Gói cước
-          </Link>
-          <Link href="#contact" className="block py-2">
+          <a
+            href="#subscriptions"
+            className="text-slate-600 px-3 py-1 hover:bg-slate-100 rounded-xl text-xs lg:text-lg"
+          >
+            Bảng Giá
+          </a>
+          <a
+            href="#function"
+            className="text-slate-600 px-3 py-1 hover:bg-slate-100 rounded-xl text-xs lg:text-lg"
+          >
+            Tính Năng
+          </a>
+          <Link
+            href="https://toolsngon.com/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 px-3 py-1 hover:bg-slate-100 rounded-xl text-xs lg:text-lg"
+          >
             Liên hệ
           </Link>
         </div>
-      )}
-    </header>
+
+        {/* Buttons */}
+        <div className="lg:col-span-2 flex items-center justify-end gap-2 relative z-20">
+          <Link
+            href="https://app.toolsngon.com/signup/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white bg-blue-500 hover:bg-blue-600 lg:py-3 px-3 py-1.5 rounded-2xl text-sm whitespace-nowrap"
+          >
+            Dùng Thử Miễn Phí
+          </Link>
+          <Link
+            href="/login"
+            className="text-slate-900 bg-white border border-slate-300 lg:py-3 rounded-2xl px-3 py-1.5 text-sm whitespace-nowrap"
+          >
+            Đăng Nhập
+          </Link>
+        </div>
+      </div>
+    </nav>
   );
 }
